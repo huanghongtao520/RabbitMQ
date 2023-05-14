@@ -1,3 +1,5 @@
+server:
+  port: 8081
 # 配置rabbitmq服务,默认配置账号密码为guest,guest
 # 如果是服务器上rabbitmq用下面连接
 # spring:

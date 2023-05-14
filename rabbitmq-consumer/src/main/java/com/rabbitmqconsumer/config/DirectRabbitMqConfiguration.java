@@ -1,18 +1,18 @@
-package com.rabbitmqproductor.config;
+package com.rabbitmqconsumer.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMqConfiguration {
-    //1.声明fanout模式交换机
+public class DirectRabbitMqConfiguration {
+    //1.声明direct模式交换机
     @Bean
-    public FanoutExchange fanoutExchange(){
-        return new FanoutExchange("fanout_order_exchange",true,false);
+    public DirectExchange directExchange(){
+        return new DirectExchange("Direct模式",true,false);
     }
 
     //2.声明队列
@@ -32,14 +32,14 @@ public class RabbitMqConfiguration {
     // 3. 完成队列和交换机绑定关系
     @Bean
     public Binding duanxinBindding(){
-        return BindingBuilder.bind(duanxinQueue()).to(fanoutExchange());
+        return BindingBuilder.bind(duanxinQueue()).to(directExchange()).with("duanxin");
     }
     @Bean
     public Binding smsBindding(){
-        return BindingBuilder.bind(smsQueue()).to(fanoutExchange());
+        return BindingBuilder.bind(smsQueue()).to(directExchange()).with("sms");
     }
     @Bean
     public Binding emailBindding(){
-        return BindingBuilder.bind(emailQueue()).to(fanoutExchange());
+        return BindingBuilder.bind(emailQueue()).to(directExchange()).with("email");
     }
 }

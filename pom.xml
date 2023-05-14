@@ -5,8 +5,12 @@
     <groupId>com</groupId>
     <artifactId>RabbitMQ</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>RabbitMQ</name>
     <description>RabbitMQ</description>
+    <modules>
+        <module>ru-men</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
